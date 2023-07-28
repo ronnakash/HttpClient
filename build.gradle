@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'org.net'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Jersey Client
+    implementation 'org.glassfish.jersey.core:jersey-client:2.27'
+
+    // Jersey HK2 Integration
+    implementation 'org.glassfish.jersey.inject:jersey-hk2:2.27'
+
+//    // Jersey RX Client with RxJava
+//    implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava:2.27'
+
+    // Jersey RX Client with RxJava2
+    implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava:2.27'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
