@@ -15,6 +15,7 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.Link;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
@@ -22,12 +23,28 @@ import java.net.URISyntaxException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 
-import static org.glassfish.jersey.internal.guava.Preconditions.checkNotNull;
 
 public class HttpClient extends JerseyClient {
 
 	private static final DefaultSslContextProvider DEFAULT_SSL_CONTEXT_PROVIDER = () -> SslConfigurator.getDefaultContext();
+	private static final UnsafeValue<SSLContext, IllegalStateException> SSL_CONTEXT_ILLEGAL_STATE_EXCEPTION_UNSAFE_VALUE =
+			Values.lazy(new UnsafeValue<>() {
+		@Override
+		public SSLContext get() {
+			return DEFAULT_SSL_CONTEXT_PROVIDER.getDefaultSslContext();
+		}
+	});
 
+
+	public HttpClient(JerseyClient client) {
+		super(
+				client.getConfiguration(),
+				SSL_CONTEXT_ILLEGAL_STATE_EXCEPTION_UNSAFE_VALUE,
+				client.getHostnameVerifier(),
+				client.getExecutorService(),
+				client.getScheduledExecutorService()
+		);
+	}
 
 	public HttpClient(HttpClientConfig config,
 					  UnsafeValue<SSLContext, IllegalStateException> sslContextIllegalStateExceptionUnsafeValue,
@@ -46,26 +63,24 @@ public class HttpClient extends JerseyClient {
 	public HttpWebTarget target(String uri) {
 		Preconditions.checkState(!super.isClosed(), LocalizationMessages.CLIENT_INSTANCE_CLOSED());
 		Preconditions.checkNotNull(uri, LocalizationMessages.CLIENT_URI_TEMPLATE_NULL());
-		try {
-			return new HttpWebTarget(uri, this);
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return new HttpWebTarget(uri, this);
 	}
 
-//	@Override
-//	public JerseyWebTarget target(URI uri) {
-//		return super.target(uri);
-//	}
-//
-//	@Override
-//	public JerseyWebTarget target(UriBuilder uriBuilder) {
-//		return super.target(uriBuilder);
-//	}
-//
-//	@Override
-//	public JerseyWebTarget target(Link link) {
-//		return super.target(link);
-//	}
+	@Override
+	public HttpWebTarget target(URI uri) {
+		Preconditions.checkState(!super.isClosed(), LocalizationMessages.CLIENT_INSTANCE_CLOSED());
+		Preconditions.checkNotNull(uri, LocalizationMessages.CLIENT_URI_TEMPLATE_NULL());
+		return new HttpWebTarget(uri, this);
+
+	}
+
+	@Override
+	public HttpWebTarget target(UriBuilder uriBuilder) {
+		return super.target(uriBuilder);
+	}
+
+	@Override
+	public HttpWebTarget target(Link link) {
+		return super.target(link);
+	}
 }

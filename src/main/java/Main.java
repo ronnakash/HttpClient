@@ -8,7 +8,7 @@ public class Main {
 		String response = client
 				.target("")
 				.request()
-				.
+
 
 	}
 }
