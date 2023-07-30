@@ -5,7 +5,7 @@ import javax.ws.rs.core.Configuration;
 public class HttpClientConfiguration {
     private Configuration config;
 
-    public Configuration getConfig() {
+    protected Configuration getJerseyConfig() {
         return config;
     }
 }

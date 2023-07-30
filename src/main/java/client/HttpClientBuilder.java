@@ -4,9 +4,6 @@ import org.glassfish.jersey.client.JerseyClientBuilder;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.Configuration;
 import java.security.KeyStore;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,7 +19,7 @@ public class HttpClientBuilder {
     }
 
     public HttpClientBuilder withConfig(HttpClientConfiguration config) {
-        this.jerseyClientBuilder.withConfig(config.getConfig());
+        this.jerseyClientBuilder.withConfig(config.getJerseyConfig());
         return this;
     }
 
