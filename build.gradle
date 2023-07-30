@@ -22,6 +22,8 @@ dependencies {
     // Jersey RX Client with RxJava2
     implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava:2.27'
 
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
