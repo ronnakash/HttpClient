@@ -12,17 +12,10 @@ repositories {
 dependencies {
     // Jersey Client
     implementation 'org.glassfish.jersey.core:jersey-client:2.27'
-
-    // Jersey HK2 Integration
     implementation 'org.glassfish.jersey.inject:jersey-hk2:2.27'
-
-//    // Jersey RX Client with RxJava
-//    implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava:2.27'
-
-    // Jersey RX Client with RxJava2
     implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava:2.27'
-
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'org.glassfish.jersey.media:jersey-media-json-jackson:3.0.3'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'

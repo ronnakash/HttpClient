@@ -11,10 +11,8 @@ public class Main {
 
 	public static void main(String[] args){
 		try {
-			System.out.println("hello!");
-			Client client = new
-					JerseyClientBuilder()
-					.register(new ObjectMapperContextResolver())
+			Client client = new JerseyClientBuilder()
+//					.register(new ObjectMapperContextResolver())
 					.build();
 
 			List<List<Integer>> result = client
