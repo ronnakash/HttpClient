@@ -31,8 +31,8 @@ public class JsonProvider<T> implements MessageBodyReader<T>, MessageBodyWriter<
 
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return MediaType.APPLICATION_JSON.equals(mediaType.getType()) &&
-                MediaType.APPLICATION_JSON.equals(mediaType.getSubtype());
+        return MediaType.APPLICATION_JSON_TYPE.getType().equals(mediaType.getType()) &&
+                MediaType.APPLICATION_JSON_TYPE.getSubtype().equals(mediaType.getSubtype());
     }
 
     @Override
