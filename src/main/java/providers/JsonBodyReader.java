@@ -1,18 +1,20 @@
 package providers;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-public class JsonBodyReader<T> implements MessageBodyReader<T> {
+public abstract class JsonBodyReader<T> implements MessageBodyReader<T> {
 
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
@@ -27,10 +29,13 @@ public class JsonBodyReader<T> implements MessageBodyReader<T> {
         return gson.fromJson(reader, genericType);
     }
 
-    private Gson createGson() {
-        return new GsonBuilder()
-                .serializeNulls()
-//                .setPrettyPrinting()
-                .create();
-    }
+    abstract Gson createGson();
+
+//    private Gson createGson() {
+//        return new GsonBuilder()
+//                .serializeNulls()
+////                .setPrettyPrinting()
+//                .create();
+//    }
+
 }

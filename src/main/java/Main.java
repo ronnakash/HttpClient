@@ -1,3 +1,4 @@
+import providers.DefaultJsonBodyReader;
 import providers.JsonBodyReader;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 
@@ -14,8 +15,7 @@ public class Main {
 	public static void main(String[] args){
 		try {
 			Client client = new JerseyClientBuilder()
-//					.register(new ObjectMapperContextResolver())
-					.register(new JsonBodyReader<>())
+					.register(new DefaultJsonBodyReader<>())
 					.build();
 
 			String result = client
@@ -28,20 +28,6 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}
-
-
-	private <T> T test(Class<T> clazz) {
-		Client client = new JerseyClientBuilder()
-//					.register(new ObjectMapperContextResolver())
-				.register(new JsonBodyReader<>())
-				.build();
-
-		return client
-				.target("http://localhost:9090/test/request")
-				.request(MediaType.APPLICATION_JSON_TYPE)
-				.get(new GenericType<>() {});
-
 	}
 
 }
