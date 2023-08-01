@@ -1,11 +1,9 @@
-import providers.JsonProvider;
-import providers.ObjectMapperContextResolver;
+import providers.JsonBodyReader;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 public class Main {
 
@@ -17,7 +15,7 @@ public class Main {
 		try {
 			Client client = new JerseyClientBuilder()
 //					.register(new ObjectMapperContextResolver())
-					.register(new JsonProvider<>())
+					.register(new JsonBodyReader<>())
 					.build();
 
 			String result = client
@@ -36,7 +34,7 @@ public class Main {
 	private <T> T test(Class<T> clazz) {
 		Client client = new JerseyClientBuilder()
 //					.register(new ObjectMapperContextResolver())
-				.register(new JsonProvider<>())
+				.register(new JsonBodyReader<>())
 				.build();
 
 		return client
