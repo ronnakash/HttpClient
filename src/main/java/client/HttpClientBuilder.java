@@ -40,12 +40,13 @@ public class HttpClientBuilder {
     }
 
     public HttpClientBuilder bodyReader(MessageBodyReader<?> bodyReader) {
-        if (bodyReader instanceof JsonBodyReader<?> || bodyReader instanceof XmlBodyReader<?>)
-            throw new UnsupportedOperationException(); // other exception???
+//        if (bodyReader instanceof JsonBodyReader<?> || bodyReader instanceof XmlBodyReader<?>)
+//            throw new UnsupportedOperationException(); // other exception???
         this.jerseyClientBuilder.register(bodyReader);
         return this;
     }
 
+    //TODO: if we add body parsers to config, read them
     public HttpClientBuilder withConfig(HttpClientConfiguration config) {
         this.jerseyClientBuilder.withConfig(config.getJerseyConfig());
         return this;
