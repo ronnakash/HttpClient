@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 
 public class DefaultJsonBodyReader<T> extends JsonBodyReader<T>{
 
+    public DefaultJsonBodyReader() {}
+
     @Override
     Gson createGson() {
         return new GsonBuilder()

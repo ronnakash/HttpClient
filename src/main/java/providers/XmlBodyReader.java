@@ -16,7 +16,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-public class XmlBodyReader<T> implements MessageBodyReader<T> {
+public abstract class XmlBodyReader<T> implements MessageBodyReader<T> {
+
 
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
@@ -30,10 +31,6 @@ public class XmlBodyReader<T> implements MessageBodyReader<T> {
         return objectMapper.readValue(reader, type);
     }
 
-    private ObjectMapper createXmlMapper() {
-        XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        // Add any other configuration specific to your needs
-        return xmlMapper;
-    }
+    protected abstract ObjectMapper createXmlMapper();
+
 }

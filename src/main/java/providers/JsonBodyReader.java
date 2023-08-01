@@ -31,11 +31,4 @@ public abstract class JsonBodyReader<T> implements MessageBodyReader<T> {
 
     abstract Gson createGson();
 
-//    private Gson createGson() {
-//        return new GsonBuilder()
-//                .serializeNulls()
-////                .setPrettyPrinting()
-//                .create();
-//    }
-
 }
