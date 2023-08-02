@@ -8,7 +8,7 @@ public class DefaultJsonBodyReader<T> extends JsonBodyReader<T>{
     public DefaultJsonBodyReader() {}
 
     @Override
-    Gson createGson() {
+    public Gson createGson() {
         return new GsonBuilder()
                 .serializeNulls()
 //                .setPrettyPrinting()

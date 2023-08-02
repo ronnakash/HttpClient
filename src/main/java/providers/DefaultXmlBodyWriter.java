@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-public class DefaultXmlBodyReader<T> extends XmlBodyReader<T> {
-
-    public DefaultXmlBodyReader() {}
+public class DefaultXmlBodyWriter<T> extends XmlBodyWriter<T> {
 
     @Override
     public ObjectMapper createXmlMapper() {
@@ -14,5 +12,4 @@ public class DefaultXmlBodyReader<T> extends XmlBodyReader<T> {
         xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return xmlMapper;
     }
-
 }

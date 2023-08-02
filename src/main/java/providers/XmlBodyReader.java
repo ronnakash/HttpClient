@@ -1,8 +1,7 @@
 package providers;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import creators.XmlMapperCreator;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -16,7 +15,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-public abstract class XmlBodyReader<T> implements MessageBodyReader<T> {
+public abstract class XmlBodyReader<T> implements MessageBodyReader<T>, XmlMapperCreator {
 
 
     @Override
@@ -31,6 +30,6 @@ public abstract class XmlBodyReader<T> implements MessageBodyReader<T> {
         return objectMapper.readValue(reader, type);
     }
 
-    protected abstract ObjectMapper createXmlMapper();
+//    protected abstract ObjectMapper createXmlMapper();
 
 }
