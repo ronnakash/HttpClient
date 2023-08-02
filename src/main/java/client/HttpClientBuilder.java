@@ -102,7 +102,7 @@ public class HttpClientBuilder {
 
     // static defaults
 
-    public static Client defaultClient() {
+    public static Client newClient() {
         return new JerseyClientBuilder()
                 .connectTimeout(3, TimeUnit.SECONDS)
                 .readTimeout(1, TimeUnit.MINUTES)
@@ -111,7 +111,7 @@ public class HttpClientBuilder {
                 .build();
     }
 
-    public static Client defaultClient(HttpClientConfiguration configuration) {
+    public static Client newClient(HttpClientConfiguration configuration) {
         return new JerseyClientBuilder()
                 .withConfig(configuration.getJerseyConfig()) // TODO: probably should change this
                 .register(new DefaultXmlBodyReader<>())
