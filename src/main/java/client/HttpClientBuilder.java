@@ -1,5 +1,6 @@
 package client;
 
+import org.glassfish.jersey.client.JerseyClient;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import providers.DefaultJsonBodyReader;
 import providers.DefaultXmlBodyReader;
@@ -92,8 +93,9 @@ public class HttpClientBuilder {
         return this;
     }
 
-    public Client build() {
-        return this.jerseyClientBuilder.build();
+    public HttpClient build() {
+        JerseyClient client = this.jerseyClientBuilder.build();
+        return new HttpClient(client);
     }
 
     public HttpClientConfiguration getConfiguration() {
@@ -102,21 +104,23 @@ public class HttpClientBuilder {
 
     // static defaults
 
-    public static Client newClient() {
-        return new JerseyClientBuilder()
+    public static HttpClient newClient() {
+        Client client = new JerseyClientBuilder()
                 .connectTimeout(3, TimeUnit.SECONDS)
                 .readTimeout(1, TimeUnit.MINUTES)
                 .register(new DefaultXmlBodyReader<>())
                 .register(new DefaultJsonBodyReader<>())
                 .build();
+        return new HttpClient(client);
     }
 
-    public static Client newClient(HttpClientConfiguration configuration) {
-        return new JerseyClientBuilder()
+    public static HttpClient newClient(HttpClientConfiguration configuration) {
+        Client client = new JerseyClientBuilder()
                 .withConfig(configuration.getJerseyConfig()) // TODO: probably should change this
                 .register(new DefaultXmlBodyReader<>())
                 .register(new DefaultJsonBodyReader<>())
                 .build();
+        return new HttpClient(client);
     }
 
 }
