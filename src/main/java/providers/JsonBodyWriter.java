@@ -23,13 +23,6 @@ public abstract class JsonBodyWriter<T> implements MessageBodyWriter<T>, GsonCre
                 MediaType.APPLICATION_JSON_TYPE.getSubtype().equals(mediaType.getSubtype());
     }
 
-    //TODO: figure out what this is
-
-    @Override
-    public long getSize(T t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return -1;
-    }
-
     @Override
     public void writeTo(T t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         Gson gson = createGson();

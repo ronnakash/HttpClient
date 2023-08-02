@@ -24,11 +24,6 @@ public abstract class XmlBodyWriter<T> implements MessageBodyWriter<T>, XmlMappe
     }
 
     @Override
-    public long getSize(T t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return -1;
-    }
-
-    @Override
     public void writeTo(T t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         ObjectMapper xmlMapper = createXmlMapper();
         Writer writer = null;
