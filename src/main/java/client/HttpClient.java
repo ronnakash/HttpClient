@@ -11,7 +11,7 @@ import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.util.Map;
 
-public class HttpClient implements Client {
+public class HttpClient {
 
     private final Client client;
     HttpClientConfiguration config;
@@ -21,102 +21,85 @@ public class HttpClient implements Client {
         this.config = new HttpClientConfiguration(client.getConfiguration());
     }
 
-    @Override
     public void close() {
         this.client.close();
     }
 
-    @Override
-    public WebTarget target(String uri) {
+    public HttpWebTarget target(String uri) {
         return this.client.target(uri);
     }
 
-    @Override
-    public WebTarget target(URI uri) {
+    public HttpWebTarget target(URI uri) {
         return this.client.target(uri);
     }
 
-    @Override
-    public WebTarget target(UriBuilder uriBuilder) {
+    public HttpWebTarget target(UriBuilder uriBuilder) {
         return this.client.target(uriBuilder);
     }
 
-    @Override
-    public WebTarget target(Link link) {
-        return this.client.target(link);
-    }
+//    public HttpWebTarget target(Link link) {
+//        return this.client.target(link);
+//    }
 
-    @Override
-    public Invocation.Builder invocation(Link link) {
-        return this.client.invocation(link);
-    }
+//    public Invocation.Builder invocation(Link link) {
+//        return this.client.invocation(link);
+//    }
 
-    @Override
     public SSLContext getSslContext() {
         return this.client.getSslContext();
     }
 
-    @Override
     public HostnameVerifier getHostnameVerifier() {
         return this.client.getHostnameVerifier();
     }
 
-    @Override
     public Configuration getConfiguration() {
-        return this.client.getConfiguration();
+//        return this.client.getConfiguration();
+        return config;
     }
 
-    @Override
-    public Client property(String name, Object value) {
-        this.client.property(name, value);
-        return this;
-    }
-
-    @Override
-    public Client register(Class<?> componentClass) {
-        this.client.register(componentClass);
-        return this;
-    }
-
-    @Override
-    public Client register(Class<?> componentClass, int priority) {
-        this.client.register(componentClass, priority);
-        return this;
-    }
-
-    @Override
-    public Client register(Class<?> componentClass, Class<?>... contracts) {
-        this.client.register(componentClass, contracts);
-        return this;
-    }
-
-    @Override
-    public Client register(Class<?> componentClass, Map<Class<?>, Integer> contracts) {
-        this.client.register(componentClass, contracts);
-        return this;
-    }
-
-    @Override
-    public Client register(Object component) {
-        this.client.register(component);
-        return this;
-    }
-
-    @Override
-    public Client register(Object component, int priority) {
-        this.client.register(component, priority);
-        return this;
-    }
-
-    @Override
-    public Client register(Object component, Class<?>... contracts) {
-        this.client.register(component, contracts);
-        return this;
-    }
-
-    @Override
-    public Client register(Object component, Map<Class<?>, Integer> contracts) {
-        this.client.register(component, contracts);
-        return this;
-    }
+//    public HttpClient property(String name, Object value) {
+//        this.client.property(name, value);
+//        return this;
+//    }
+//
+//    public HttpClient register(Class<?> componentClass) {
+//        this.client.register(componentClass);
+//        return this;
+//    }
+//
+//    public HttpClient register(Class<?> componentClass, int priority) {
+//        this.client.register(componentClass, priority);
+//        return this;
+//    }
+//
+//    public HttpClient register(Class<?> componentClass, Class<?>... contracts) {
+//        this.client.register(componentClass, contracts);
+//        return this;
+//    }
+//
+//    public HttpClient register(Class<?> componentClass, Map<Class<?>, Integer> contracts) {
+//        this.client.register(componentClass, contracts);
+//        return this;
+//    }
+//
+//    public HttpClient register(Object component) {
+//        this.client.register(component);
+//        return this;
+//    }
+//
+//    public HttpClient register(Object component, int priority) {
+//        this.client.register(component, priority);
+//        return this;
+//    }
+//
+//    public HttpClient register(Object component, Class<?>... contracts) {
+//        this.client.register(component, contracts);
+//        return this;
+//    }
+//
+//    public HttpClient register(Object component, Map<Class<?>, Integer> contracts) {
+//        this.client.register(component, contracts);
+//        return this;
+//    }
 }
