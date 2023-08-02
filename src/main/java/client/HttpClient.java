@@ -14,10 +14,11 @@ import java.util.Map;
 public class HttpClient implements Client {
 
     private final Client client;
-
+    HttpClientConfiguration config;
 
     public HttpClient(Client client) {
         this.client = client;
+        this.config = new HttpClientConfiguration(client.getConfiguration());
     }
 
     @Override
