@@ -25,25 +25,21 @@ public class HttpClient {
         this.client.close();
     }
 
-//    public HttpWebTarget target(String uri) {
-//        return new HttpWebTarget(this.client.target(uri));
-//    }
-//
-//    public HttpWebTarget target(URI uri) {
-//        return new HttpWebTarget(this.client.target(uri));
-//    }
-//
-//    public HttpWebTarget target(UriBuilder uriBuilder) {
-//        return new HttpWebTarget(this.client.target(uriBuilder));
-//    }
+    public WebTarget target(String uri) {
+        return this.client.target(uri);
+    }
 
-//    public HttpWebTarget target(Link link) {
-//        return this.client.target(link);
-//    }
+    public WebTarget target(URI uri) {
+        return this.client.target(uri);
+    }
 
-//    public Invocation.Builder invocation(Link link) {
-//        return this.client.invocation(link);
-//    }
+    public WebTarget target(UriBuilder uriBuilder) {
+        return this.client.target(uriBuilder);
+    }
+
+    public WebTarget target(Link link) {
+        return this.client.target(link);
+    }
 
     public SSLContext getSslContext() {
         return this.client.getSslContext();
@@ -54,52 +50,7 @@ public class HttpClient {
     }
 
     public Configuration getConfiguration() {
-//        return this.client.getConfiguration();
         return config;
     }
 
-//    public HttpClient property(String name, Object value) {
-//        this.client.property(name, value);
-//        return this;
-//    }
-//
-//    public HttpClient register(Class<?> componentClass) {
-//        this.client.register(componentClass);
-//        return this;
-//    }
-//
-//    public HttpClient register(Class<?> componentClass, int priority) {
-//        this.client.register(componentClass, priority);
-//        return this;
-//    }
-//
-//    public HttpClient register(Class<?> componentClass, Class<?>... contracts) {
-//        this.client.register(componentClass, contracts);
-//        return this;
-//    }
-//
-//    public HttpClient register(Class<?> componentClass, Map<Class<?>, Integer> contracts) {
-//        this.client.register(componentClass, contracts);
-//        return this;
-//    }
-//
-//    public HttpClient register(Object component) {
-//        this.client.register(component);
-//        return this;
-//    }
-//
-//    public HttpClient register(Object component, int priority) {
-//        this.client.register(component, priority);
-//        return this;
-//    }
-//
-//    public HttpClient register(Object component, Class<?>... contracts) {
-//        this.client.register(component, contracts);
-//        return this;
-//    }
-//
-//    public HttpClient register(Object component, Map<Class<?>, Integer> contracts) {
-//        this.client.register(component, contracts);
-//        return this;
-//    }
 }
