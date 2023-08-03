@@ -102,10 +102,6 @@ public class HttpClientBuilder {
         return new HttpClient(client);
     }
 
-//    public HttpClientConfiguration getConfiguration() {
-//        return configuration;
-//    }
-
     // static defaults
 
     public static HttpClient newClient() {
