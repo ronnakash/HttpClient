@@ -27,9 +27,7 @@ public class XmlBodyReaderTest {
                 .get(new GenericType<>() {});
 
         List<Integer> arr = Arrays.asList(1,2,3);
-
         List<List<Integer>> expected = Arrays.asList(arr, arr, arr);
-
         assertEquals(expected, result);
     }
 

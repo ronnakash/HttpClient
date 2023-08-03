@@ -26,15 +26,15 @@ public class HttpClient {
     }
 
     public HttpWebTarget target(String uri) {
-        return this.client.target(uri);
+        return new HttpWebTarget(this.client.target(uri));
     }
 
     public HttpWebTarget target(URI uri) {
-        return this.client.target(uri);
+        return new HttpWebTarget(this.client.target(uri));
     }
 
     public HttpWebTarget target(UriBuilder uriBuilder) {
-        return this.client.target(uriBuilder);
+        return new HttpWebTarget(this.client.target(uriBuilder));
     }
 
 //    public HttpWebTarget target(Link link) {
