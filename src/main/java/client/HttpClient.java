@@ -25,17 +25,17 @@ public class HttpClient {
         this.client.close();
     }
 
-    public HttpWebTarget target(String uri) {
-        return new HttpWebTarget(this.client.target(uri));
-    }
-
-    public HttpWebTarget target(URI uri) {
-        return new HttpWebTarget(this.client.target(uri));
-    }
-
-    public HttpWebTarget target(UriBuilder uriBuilder) {
-        return new HttpWebTarget(this.client.target(uriBuilder));
-    }
+//    public HttpWebTarget target(String uri) {
+//        return new HttpWebTarget(this.client.target(uri));
+//    }
+//
+//    public HttpWebTarget target(URI uri) {
+//        return new HttpWebTarget(this.client.target(uri));
+//    }
+//
+//    public HttpWebTarget target(UriBuilder uriBuilder) {
+//        return new HttpWebTarget(this.client.target(uriBuilder));
+//    }
 
 //    public HttpWebTarget target(Link link) {
 //        return this.client.target(link);

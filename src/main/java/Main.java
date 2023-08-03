@@ -18,12 +18,12 @@ public class Main {
 					.register(new DefaultJsonBodyReader<>())
 					.build();
 
-			String result = client
+			var result = client
 					.target("http://localhost:9090/test/request")
-					.request(MediaType.APPLICATION_JSON_TYPE)
-					.get(new GenericType<>() {});
+					.request(MediaType.APPLICATION_JSON_TYPE);
+//					.get(new GenericType<>() {});
 
-			System.out.println(result);
+			System.out.println(result.get(new GenericType<String>() {}));
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -1,5 +1,7 @@
 package client;
 
+import org.glassfish.jersey.client.ClientConfig;
+
 import javax.ws.rs.RuntimeType;
 import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.Feature;
