@@ -19,10 +19,14 @@ import java.util.concurrent.TimeUnit;
 public class HttpClientBuilder {
 
     JerseyClientBuilder jerseyClientBuilder;
-    HttpClientConfiguration configuration;
+//    HttpClientConfiguration configuration;
 
     public HttpClientBuilder(JerseyClientBuilder jerseyClientBuilder) {
         this.jerseyClientBuilder = jerseyClientBuilder;
+    }
+
+    public HttpClientBuilder() {
+        this.jerseyClientBuilder = new JerseyClientBuilder();
     }
 
     //TODO: figure out how i want to use the body readers
@@ -98,9 +102,9 @@ public class HttpClientBuilder {
         return new HttpClient(client);
     }
 
-    public HttpClientConfiguration getConfiguration() {
-        return configuration;
-    }
+//    public HttpClientConfiguration getConfiguration() {
+//        return configuration;
+//    }
 
     // static defaults
 
@@ -121,6 +125,13 @@ public class HttpClientBuilder {
                 .register(new DefaultJsonBodyReader<>())
                 .build();
         return new HttpClient(client);
+    }
+
+    public static HttpClientBuilder withDefaultMappers() {
+        JerseyClientBuilder jerseyClientBuilder = new JerseyClientBuilder()
+                .register(new DefaultXmlBodyReader<>())
+                .register(new DefaultJsonBodyReader<>());
+        return new HttpClientBuilder(jerseyClientBuilder);
     }
 
 }
