@@ -1,6 +1,9 @@
 package client;
 
+import mock.InnerObject;
+import mock.LeafObject;
 import mock.MockServerUtils;
+import mock.NestedObject;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.junit.jupiter.api.AfterAll;
@@ -9,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import providers.DefaultXmlBodyReader;
 
 import javax.ws.rs.client.Client;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import java.util.Arrays;
 import java.util.List;
@@ -31,18 +33,23 @@ public class XmlBodyReaderTest {
     }
 
     @Test
-    public void testXmlBodyWriter() {
-
-        ClientConfig clientConfig = new ClientConfig().register(new DefaultXmlBodyReader<>());
+    public void testXmlBodyReader() {
+        ClientConfig clientConfig = new ClientConfig()
+                .register(new DefaultXmlBodyReader<>());
         Client client = JerseyClientBuilder.createClient(clientConfig);
 
-        List<List<Integer>> result = client
+        NestedObject result = client
                 .target("http://localhost:9090/test/xml/response")
                 .request(MediaType.APPLICATION_XML)
-                .get(new GenericType<>() {});
+                .get(NestedObject.class);
 
-        List<Integer> arr = Arrays.asList(1, 2, 3);
-        List<List<Integer>> expected = Arrays.asList(arr, arr, arr);
+        List<LeafObject> leafObjects = Arrays.asList(new LeafObject(1), new LeafObject(2), new LeafObject(3));
+        InnerObject innerObject = new InnerObject(leafObjects);
+        List<InnerObject> innerObjects = Arrays.asList(innerObject, innerObject, innerObject);
+        NestedObject expected = new NestedObject(innerObjects);
+
         assertEquals(expected, result);
     }
+
+
 }

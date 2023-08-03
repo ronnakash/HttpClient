@@ -25,7 +25,50 @@ public class MockServerUtils {
                 .willReturn(WireMock.aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/xml")
-                        .withBody("<data><row>1</row><row>2</row><row>3</row></data>")));
+                        .withBody(
+                                "<nestedObject>" +
+                                    "<innerObjects>" +
+                                        "<innerObject>" +
+                                            "<leafObjects>" +
+                                                "<leafObject>" +
+                                                    "<value>1</value>" +
+                                                "</leafObject>" +
+                                                "<leafObject>" +
+                                                    "<value>2</value>" +
+                                                "</leafObject>" +
+                                                "<leafObject>" +
+                                                    "<value>3</value>" +
+                                                "</leafObject>" +
+                                            "</leafObjects>" +
+                                        "</innerObject>" +
+                                        "<innerObject>" +
+                                            "<leafObjects>" +
+                                                "<leafObject>" +
+                                                    "<value>1</value>" +
+                                                "</leafObject>" +
+                                                "<leafObject>" +
+                                                    "<value>2</value>" +
+                                                "</leafObject>" +
+                                                "<leafObject>" +
+                                                    "<value>3</value>" +
+                                                "</leafObject>" +
+                                            "</leafObjects>" +
+                                        "</innerObject>" +
+                                        "<innerObject>" +
+                                            "<leafObjects>" +
+                                                "<leafObject>" +
+                                                    "<value>1</value>" +
+                                                "</leafObject>" +
+                                                "<leafObject>" +
+                                                    "<value>2</value>" +
+                                                "</leafObject>" +
+                                                "<leafObject>" +
+                                                    "<value>3</value>" +
+                                                "</leafObject>" +
+                                            "</leafObjects>" +
+                                        "</innerObject>" +
+                                    "</innerObjects>" +
+                                "</nestedObject>")));
 
         WireMock.stubFor(WireMock.post(WireMock.urlPathEqualTo("/test/json/request"))
                 .withHeader("Content-Type", WireMock.equalTo("application/json"))
@@ -35,9 +78,46 @@ public class MockServerUtils {
 
         WireMock.stubFor(WireMock.post(WireMock.urlPathEqualTo("/test/xml/request"))
                 .withHeader("Content-Type", WireMock.equalTo("application/xml"))
-                .withRequestBody(WireMock.equalToXml("<data><row>1</row><row>2</row><row>3</row></data>"))
+                .withRequestBody(WireMock.equalToXml("" +
+                        "<data>" +
+                        "<row>" +
+                        "<item>1</item>" +
+                        "<item>2</item>" +
+                        "<item>3</item>" +
+                        "</row>" +
+                        "<row>" +
+                        "<item>1</item>" +
+                        "<item>2</item>" +
+                        "<item>3</item>" +
+                        "</row>" +
+                        "<row>" +
+                        "<item>1</item>" +
+                        "<item>2</item>" +
+                        "<item>3</item>" +
+                        "</row>" +
+                        "</data>"))
                 .willReturn(WireMock.aResponse()
-                        .withStatus(200)));
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/xml")
+                        .withBody("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                                "<result>" +
+                                "<list>" +
+                                "<item>1</item>" +
+                                "<item>2</item>" +
+                                "<item>3</item>" +
+                                "</list>" +
+                                "<list>" +
+                                "<item>1</item>" +
+                                "<item>2</item>" +
+                                "<item>3</item>" +
+                                "</list>" +
+                                "<list>" +
+                                "<item>1</item>" +
+                                "<item>2</item>" +
+                                "<item>3</item>" +
+                                "</list>" +
+                                "</result>")));
+
 
     }
 

@@ -11,9 +11,9 @@ repositories {
 
 dependencies {
     // Jersey Client
-    implementation 'org.glassfish.jersey.core:jersey-client:2.27'
-    implementation 'org.glassfish.jersey.inject:jersey-hk2:2.27'
-    implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava2:2.27'
+    implementation 'org.glassfish.jersey.core:jersey-client:2.36'
+    implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
+    implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava2:2.36'
 
     implementation 'com.google.code.gson:gson:2.8.9'
 
