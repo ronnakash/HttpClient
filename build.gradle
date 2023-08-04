@@ -9,25 +9,42 @@ repositories {
     mavenCentral()
 }
 
+// Define common versions as variables
+def jerseyVersion = '2.36'
+def gsonVersion = '2.8.9'
+def jacksonVersion = '2.12.5'
+def junitVersion = '5.7.0'
+def wiremockVersion = '2.27.2'
+def log4jVersion = '2.20.0'
+
 dependencies {
-    // Jersey Client
-    implementation 'org.glassfish.jersey.core:jersey-client:2.36'
-    implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
-    implementation 'org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava2:2.36'
+    // Jersey dependencies
+    implementation "org.glassfish.jersey.core:jersey-client:${jerseyVersion}"
+    implementation "org.glassfish.jersey.inject:jersey-hk2:${jerseyVersion}"
+    implementation "org.glassfish.jersey.ext.rx:jersey-rx-client-rxjava2:${jerseyVersion}"
 
-    implementation 'com.google.code.gson:gson:2.8.9'
+    // Gson dependency
+    implementation "com.google.code.gson:gson:${gsonVersion}"
 
+    // JavaMail API dependency
     implementation 'javax.mail:javax.mail-api:1.6.2'
 
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.5'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.5'
+    // Jackson dependencies
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${jacksonVersion}"
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    testImplementation 'com.github.tomakehurst:wiremock:2.27.2'
+    // JUnit dependencies
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 
+    // WireMock dependency
+    testImplementation "com.github.tomakehurst:wiremock:${wiremockVersion}"
+
+    // Log4j dependency
+    testImplementation "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
 }
+
 
 test {
     useJUnitPlatform()

@@ -57,33 +57,103 @@ public class MockServerUtils {
     }
 
     private String getJsonRequestBody() {
-        return "[{\"innerObjects\":[{\"leafObjects\":[{\"value\":1},{\"value\":2},{\"value\":3}]},"
+        return "{\"innerObjects\":[{\"leafObjects\":[{\"value\":1},{\"value\":2},{\"value\":3}]},"
                 + "{\"leafObjects\":[{\"value\":1},{\"value\":2},{\"value\":3}]},"
-                + "{\"leafObjects\":[{\"value\":1},{\"value\":2},{\"value\":3}]}]}]";
+                + "{\"leafObjects\":[{\"value\":1},{\"value\":2},{\"value\":3}]}]}";
     }
 
     private String getXmlRequestBody() {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><nestedObject>"
-                + "<innerObjects><innerObject><leafObjects><leafObject><value>1</value></leafObject>"
-                + "<leafObject><value>2</value></leafObject><leafObject><value>3</value></leafObject>"
-                + "</leafObjects></innerObject><innerObject><leafObjects><leafObject><value>1</value>"
-                + "</leafObject><leafObject><value>2</value></leafObject><leafObject><value>3</value>"
-                + "</leafObject></leafObjects></innerObject><innerObject><leafObjects><leafObject>"
-                + "<value>1</value></leafObject><leafObject><value>2</value></leafObject>"
-                + "<leafObject><value>3</value></leafObject></leafObjects></innerObject>"
-                + "</innerObjects></nestedObject>";
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                "<NestedObject>" +
+                    "<innerObjects>" +
+                        "<innerObject>" +
+                            "<leafObjects>" +
+                                "<leafObject>" +
+                                    "<value>1</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>2</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>3</value>" +
+                                "</leafObject>" +
+                            "</leafObjects>" +
+                        "</innerObject>" +
+                        "<innerObject>" +
+                            "<leafObjects>" +
+                                "<leafObject>" +
+                                    "<value>1</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>2</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>3</value>" +
+                                "</leafObject>" +
+                            "</leafObjects>" +
+                        "</innerObject>" +
+                        "<innerObject>" +
+                            "<leafObjects>" +
+                                "<leafObject>" +
+                                    "<value>1</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>2</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>3</value>" +
+                                "</leafObject>" +
+                            "</leafObjects>" +
+                        "</innerObject>" +
+                    "</innerObjects>" +
+                "</NestedObject>";
     }
 
     private String getXmlResponseBody() {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><nestedObject>"
-                + "<innerObjects><innerObject><leafObjects><leafObject><value>1</value></leafObject>"
-                + "<leafObject><value>2</value></leafObject><leafObject><value>3</value></leafObject>"
-                + "</leafObjects></innerObject><innerObject><leafObjects><leafObject><value>1</value>"
-                + "</leafObject><leafObject><value>2</value></leafObject><leafObject><value>3</value>"
-                + "</leafObject></leafObjects></innerObject><innerObject><leafObjects><leafObject>"
-                + "<value>1</value></leafObject><leafObject><value>2</value></leafObject>"
-                + "<leafObject><value>3</value></leafObject></leafObjects></innerObject>"
-                + "</innerObjects></nestedObject>";
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                "<nestedObject>" +
+                    "<innerObjects>" +
+                        "<innerObject>" +
+                            "<leafObjects>" +
+                                "<leafObject>" +
+                                    "<value>1</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>2</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>3</value>" +
+                                "</leafObject>" +
+                                "</leafObjects>" +
+                            "</innerObject>" +
+                            "<innerObject>" +
+                            "<leafObjects>" +
+                            "<leafObject>" +
+                                "<value>1</value>" +
+                            "</leafObject>" +
+                            "<leafObject>" +
+                                "<value>2</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>3</value>" +
+                                "</leafObject>" +
+                            "</leafObjects>" +
+                        "</innerObject>" +
+                        "<innerObject>" +
+                            "<leafObjects>" +
+                                "<leafObject>" +
+                                    "<value>1</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>2</value>" +
+                                "</leafObject>" +
+                                "<leafObject>" +
+                                    "<value>3</value>" +
+                                "</leafObject>" +
+                            "</leafObjects>" +
+                        "</innerObject>" +
+                    "</innerObjects>" +
+                "</nestedObject>";
     }
 
 //    protected static void requestReceived(Request request, Response response) {
