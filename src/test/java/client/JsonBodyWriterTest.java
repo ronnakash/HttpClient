@@ -1,6 +1,7 @@
 package client;
 
-import mock.MockServerUtils;
+import mock.NestedObject;
+import util.MockServerUtils;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.junit.jupiter.api.AfterAll;
@@ -17,20 +18,22 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static util.TestUtils.makeBody;
 
 public class JsonBodyWriterTest {
     private static MockServerUtils mockServerUtils;
 
-    @BeforeAll
-    public static void setUp() {
-        mockServerUtils = new MockServerUtils();
-        mockServerUtils.startServer();
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        mockServerUtils.stopServer();
-    }
+//    @BeforeAll
+//    public static void setUp() {
+//        mockServerUtils = new MockServerUtils();
+//        mockServerUtils.startServer();
+//    }
+//
+//    @AfterAll
+//    public static void tearDown() {
+//        mockServerUtils.stopServer();
+//    }
 
     @Test
     public void testJsonBodyWriter() {
@@ -39,15 +42,14 @@ public class JsonBodyWriterTest {
                 .register(new DefaultJsonBodyWriter<>());
         Client client = JerseyClientBuilder.createClient(clientConfig);
 
-        List<Integer> arr = Arrays.asList(1, 2, 3);
-        List<List<Integer>> requestBody = Arrays.asList(arr, arr, arr);
+        NestedObject requestBody = makeBody();
 
-        List<List<Integer>> result = client
+        boolean result = client
                 .target("http://localhost:9090/test/json/request")
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(requestBody, MediaType.APPLICATION_JSON))
                 .readEntity(new GenericType<>() {});
 
-        assertEquals(requestBody, result);
+        assertTrue(result);
     }
 }

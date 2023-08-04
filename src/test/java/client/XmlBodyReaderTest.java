@@ -2,7 +2,7 @@ package client;
 
 import mock.InnerObject;
 import mock.LeafObject;
-import mock.MockServerUtils;
+import util.MockServerUtils;
 import mock.NestedObject;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.JerseyClientBuilder;

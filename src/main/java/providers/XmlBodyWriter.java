@@ -17,6 +17,8 @@ import java.nio.charset.StandardCharsets;
 
 public abstract class XmlBodyWriter<T> implements MessageBodyWriter<T>, XmlMapperCreator {
 
+    private final ObjectMapper xmlMapper = createXmlMapper();
+
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return MediaType.APPLICATION_XML_TYPE.getType().equals(mediaType.getType()) &&
@@ -25,15 +27,14 @@ public abstract class XmlBodyWriter<T> implements MessageBodyWriter<T>, XmlMappe
 
     @Override
     public void writeTo(T t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
-        ObjectMapper xmlMapper = createXmlMapper();
         Writer writer = null;
-        try {
+//        try {
             writer = new OutputStreamWriter(entityStream, StandardCharsets.UTF_8);
             xmlMapper.writeValue(writer, t);
-        } finally {
-            if (writer != null) {
-                writer.flush();
-            }
-        }
+//        } finally {
+//            if (writer != null) {
+//                writer.flush();
+//            }
+//        }
     }
 }

@@ -17,6 +17,8 @@ import java.nio.charset.StandardCharsets;
 
 public abstract class JsonBodyReader<T> implements MessageBodyReader<T>, GsonCreator {
 
+    private final Gson gson = createGson();
+
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return MediaType.APPLICATION_JSON_TYPE.getType().equals(mediaType.getType()) &&
@@ -25,11 +27,8 @@ public abstract class JsonBodyReader<T> implements MessageBodyReader<T>, GsonCre
 
     @Override
     public T readFrom(Class<T> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
-        Gson gson = createGson();
         Reader reader = new InputStreamReader(entityStream, StandardCharsets.UTF_8);
         return gson.fromJson(reader, genericType);
     }
-
-//    abstract Gson createGson();
 
 }

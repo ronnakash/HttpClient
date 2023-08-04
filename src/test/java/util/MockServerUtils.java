@@ -1,4 +1,4 @@
-package mock;
+package util;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -14,7 +14,6 @@ public class MockServerUtils {
         wireMockServer.start();
         WireMock.configureFor(host, port);
 
-        // Stub the endpoints here
         WireMock.stubFor(WireMock.get(WireMock.urlPathEqualTo("/test/json/response"))
                 .willReturn(WireMock.aResponse()
                         .withStatus(200)

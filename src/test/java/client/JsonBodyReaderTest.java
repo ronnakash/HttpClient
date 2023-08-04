@@ -1,6 +1,6 @@
 package client;
 
-import mock.MockServerUtils;
+import util.MockServerUtils;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
