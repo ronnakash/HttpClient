@@ -14,26 +14,24 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static util.TestUtils.makeBody;
 
 public class XmlBodyWriterTest {
-    private static MockServerUtils mockServerUtils;
+    private static MockServerUtils mockServer;
 
-//    @BeforeAll
-//    public static void setUp() {
-//        mockServerUtils = new MockServerUtils();
-//        mockServerUtils.startServer();
-//    }
-//
-//    @AfterAll
-//    public static void tearDown() {
-//        mockServerUtils.stopServer();
-//    }
+    @BeforeAll
+    public static void setUp() {
+        mockServer = new MockServerUtils();
+        mockServer.startServer();
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        mockServer.stopServer();
+    }
 
     @Test
     public void testXmlBodyWriter() {

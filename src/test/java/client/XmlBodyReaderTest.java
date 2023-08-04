@@ -19,17 +19,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class XmlBodyReaderTest {
-    private static MockServerUtils mockServerUtils;
+    private static MockServerUtils mockServer;
 
     @BeforeAll
     public static void setUp() {
-        mockServerUtils = new MockServerUtils();
-        mockServerUtils.startServer();
+        mockServer = new MockServerUtils();
+        mockServer.startServer();
     }
 
     @AfterAll
     public static void tearDown() {
-        mockServerUtils.stopServer();
+        mockServer.stopServer();
     }
 
     @Test
