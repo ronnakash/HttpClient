@@ -27,14 +27,7 @@ public abstract class XmlBodyWriter<T> implements MessageBodyWriter<T>, XmlMappe
 
     @Override
     public void writeTo(T t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
-        Writer writer = null;
-//        try {
-            writer = new OutputStreamWriter(entityStream, StandardCharsets.UTF_8);
-            xmlMapper.writeValue(writer, t);
-//        } finally {
-//            if (writer != null) {
-//                writer.flush();
-//            }
-//        }
+        Writer writer = new OutputStreamWriter(entityStream, StandardCharsets.UTF_8);
+        xmlMapper.writeValue(writer, t);
     }
 }
