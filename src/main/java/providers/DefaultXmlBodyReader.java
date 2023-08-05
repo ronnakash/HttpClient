@@ -6,10 +6,11 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class DefaultXmlBodyReader<T> extends XmlBodyReader<T> {
 
-    public DefaultXmlBodyReader() {}
+    public DefaultXmlBodyReader() {
+        super(createXmlMapper());
+    }
 
-    @Override
-    public ObjectMapper createXmlMapper() {
+    private static ObjectMapper createXmlMapper() {
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return xmlMapper;

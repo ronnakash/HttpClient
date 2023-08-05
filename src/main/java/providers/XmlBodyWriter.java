@@ -1,7 +1,6 @@
 package providers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import creators.XmlMapperCreator;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -15,9 +14,13 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-public abstract class XmlBodyWriter<T> implements MessageBodyWriter<T>, XmlMapperCreator {
+public abstract class XmlBodyWriter<T> implements MessageBodyWriter<T> {
 
-    private final ObjectMapper xmlMapper = createXmlMapper();
+    private final ObjectMapper xmlMapper;
+
+    protected XmlBodyWriter(ObjectMapper xmlMapper) {
+        this.xmlMapper = xmlMapper;
+    }
 
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {

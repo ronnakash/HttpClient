@@ -1,7 +1,6 @@
 package providers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import creators.XmlMapperCreator;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -15,9 +14,13 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-public abstract class XmlBodyReader<T> implements MessageBodyReader<T>, XmlMapperCreator {
+public abstract class XmlBodyReader<T> implements MessageBodyReader<T> {
 
-    private final ObjectMapper xmlMapper = createXmlMapper();
+    private final ObjectMapper xmlMapper;
+
+    protected XmlBodyReader(ObjectMapper xmlMapper) {
+        this.xmlMapper = xmlMapper;
+    }
 
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {

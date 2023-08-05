@@ -1,7 +1,6 @@
 package providers;
 
 import com.google.gson.Gson;
-import creators.GsonCreator;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -15,9 +14,13 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-public abstract class JsonBodyReader<T> implements MessageBodyReader<T>, GsonCreator {
+public abstract class JsonBodyReader<T> implements MessageBodyReader<T> {
 
-    private final Gson gson = createGson();
+    private final Gson gson;
+
+    protected JsonBodyReader(Gson gson) {
+        this.gson = gson;
+    }
 
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
