@@ -22,7 +22,7 @@ public class MockServerUtils {
                 .willReturn(WireMock.aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
-                        .withBody("[[1,2,3],[1,2,3],[1,2,3]]")));
+                        .withBody(getJsonRequestBody())));
 
         // Endpoint: /test/xml/response
         WireMock.stubFor(WireMock.get(WireMock.urlPathEqualTo("/test/xml/response"))

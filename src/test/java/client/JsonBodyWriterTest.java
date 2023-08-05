@@ -1,6 +1,6 @@
 package client;
 
-import mock.NestedObject;
+import util.NestedObject;
 import util.MockServerUtils;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.JerseyClientBuilder;
@@ -12,9 +12,7 @@ import providers.DefaultJsonBodyWriter;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static util.TestUtils.makeBody;

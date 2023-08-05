@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import providers.DefaultJsonBodyReader;
+import util.NestedObject;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.core.GenericType;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static util.TestUtils.makeBody;
 
 public class JsonBodyReaderTest {
     private static MockServerUtils mockServer;
@@ -36,13 +38,12 @@ public class JsonBodyReaderTest {
                 .register(new DefaultJsonBodyReader<>())
                 .build();
 
-        List<List<Integer>> result = client
+        NestedObject result = client
                 .target("http://localhost:9090/test/json/response")
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<>() {});
 
-        List<Integer> arr = Arrays.asList(1, 2, 3);
-        List<List<Integer>> expected = Arrays.asList(arr, arr, arr);
-        assertEquals(expected, result);
+        NestedObject requestBody = makeBody();
+        assertEquals(requestBody, result);
     }
 }

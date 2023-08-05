@@ -1,9 +1,9 @@
 package client;
 
-import mock.InnerObject;
-import mock.LeafObject;
+import util.InnerObject;
+import util.LeafObject;
 import util.MockServerUtils;
-import mock.NestedObject;
+import util.NestedObject;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.junit.jupiter.api.AfterAll;
