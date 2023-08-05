@@ -27,14 +27,12 @@ public abstract class JsonBodyWriter<T> implements MessageBodyWriter<T>, GsonCre
     public void writeTo(T t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         JsonElement element = gson.toJsonTree(t);
 
-        // Use a temporary ByteArrayOutputStream to collect the JSON data
         try (ByteArrayOutputStream tempOutputStream = new ByteArrayOutputStream()) {
             try (OutputStreamWriter writer = new OutputStreamWriter(tempOutputStream, StandardCharsets.UTF_8)) {
                 gson.toJson(element, writer);
                 writer.flush();
             }
 
-            // Now, write the collected JSON data to the actual OutputStream
             byte[] jsonData = tempOutputStream.toByteArray();
             entityStream.write(jsonData);
         }

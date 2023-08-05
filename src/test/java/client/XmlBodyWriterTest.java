@@ -1,5 +1,7 @@
 package client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import mock.NestedObject;
 import util.MockServerUtils;
 import org.glassfish.jersey.client.ClientConfig;
@@ -34,13 +36,16 @@ public class XmlBodyWriterTest {
     }
 
     @Test
-    public void testXmlBodyWriter() {
+    public void testXmlBodyWriter() throws JsonProcessingException {
         ClientConfig clientConfig = new ClientConfig()
                 .register(new DefaultXmlBodyReader<>())
                 .register(new DefaultXmlBodyWriter<>());
         Client client = JerseyClientBuilder.createClient(clientConfig);
 
         NestedObject requestBody = makeBody();
+
+        String str = new ObjectMapper().writeValueAsString(requestBody);
+        System.out.println(str);
 
         boolean result = client
                 .target("http://localhost:9090/test/xml/request")

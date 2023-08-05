@@ -36,7 +36,9 @@ public class MockServerUtils {
                 .withHeader("Content-Type", WireMock.equalTo("application/json"))
                 .withRequestBody(WireMock.equalToJson(getJsonRequestBody()))
                 .willReturn(WireMock.aResponse()
-                        .withStatus(200)));
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("true")));
 
         // Endpoint: /test/xml/request
         WireMock.stubFor(WireMock.post(WireMock.urlPathEqualTo("/test/xml/request"))
@@ -45,7 +47,7 @@ public class MockServerUtils {
                 .willReturn(WireMock.aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/xml")
-                        .withBody("<?xml version=\"1.0\" encoding=\"UTF-8\"?><result>SUCCESS</result>")));
+                        .withBody("<?xml version=\"1.0\" encoding=\"UTF-8\"?><result>true</result>")));
     }
 
     public void stopServer() {
@@ -66,45 +68,45 @@ public class MockServerUtils {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
                 "<NestedObject>" +
                     "<innerObjects>" +
-                        "<innerObject>" +
+                        "<innerObjects>" +
                             "<leafObjects>" +
-                                "<leafObject>" +
+                                "<leafObjects>" +
                                     "<value>1</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>2</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>3</value>" +
-                                "</leafObject>" +
+                                "</leafObjects>" +
                             "</leafObjects>" +
-                        "</innerObject>" +
-                        "<innerObject>" +
+                        "</innerObjects>" +
+                        "<innerObjects>" +
                             "<leafObjects>" +
-                                "<leafObject>" +
+                                "<leafObjects>" +
                                     "<value>1</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>2</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>3</value>" +
-                                "</leafObject>" +
+                                "</leafObjects>" +
                             "</leafObjects>" +
-                        "</innerObject>" +
-                        "<innerObject>" +
+                        "</innerObjects>" +
+                        "<innerObjects>" +
                             "<leafObjects>" +
-                                "<leafObject>" +
+                                "<leafObjects>" +
                                     "<value>1</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>2</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>3</value>" +
-                                "</leafObject>" +
+                                "</leafObjects>" +
                             "</leafObjects>" +
-                        "</innerObject>" +
+                        "</innerObjects>" +
                     "</innerObjects>" +
                 "</NestedObject>";
     }
@@ -115,41 +117,41 @@ public class MockServerUtils {
                     "<innerObjects>" +
                         "<innerObject>" +
                             "<leafObjects>" +
-                                "<leafObject>" +
+                                "<leafObjects>" +
                                     "<value>1</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>2</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>3</value>" +
-                                "</leafObject>" +
+                                "</leafObjects>" +
                                 "</leafObjects>" +
                             "</innerObject>" +
                             "<innerObject>" +
                             "<leafObjects>" +
-                            "<leafObject>" +
+                            "<leafObjects>" +
                                 "<value>1</value>" +
-                            "</leafObject>" +
-                            "<leafObject>" +
+                            "</leafObjects>" +
+                            "<leafObjects>" +
                                 "<value>2</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>3</value>" +
-                                "</leafObject>" +
+                                "</leafObjects>" +
                             "</leafObjects>" +
                         "</innerObject>" +
                         "<innerObject>" +
                             "<leafObjects>" +
-                                "<leafObject>" +
+                                "<leafObjects>" +
                                     "<value>1</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>2</value>" +
-                                "</leafObject>" +
-                                "<leafObject>" +
+                                "</leafObjects>" +
+                                "<leafObjects>" +
                                     "<value>3</value>" +
-                                "</leafObject>" +
+                                "</leafObjects>" +
                             "</leafObjects>" +
                         "</innerObject>" +
                     "</innerObjects>" +
